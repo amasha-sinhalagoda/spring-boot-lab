@@ -28,7 +28,14 @@ public String greet() {
     return "Welcome to Spring Boot!";
 }
 @GetMapping("/greet/{name}")
-public String greetWithName(@PathVariable String name) {
+public String greetWithMessage(
+        @PathVariable String name,
+        @RequestParam(required = false) String message) {
+
+    if (message != null) {
+        return "Hello " + name + "! " + message;
+    }
+
     return "Hello " + name + "! Welcome to Spring Boot!";
 }
 }
