@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.RequestParam;
 @SpringBootApplication
 @RestController
 public class DemoApplication {
@@ -13,8 +13,13 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@GetMapping("/")
-	public String rootEndpoint() {
-		return "Hello world!";
-	}
+@GetMapping("/hello")
+public String hello(@RequestParam(required = false) String name) {
+
+    if (name != null) {
+        return "Hello " + name;
+    }
+
+    return "Hello!";
+}
 }
