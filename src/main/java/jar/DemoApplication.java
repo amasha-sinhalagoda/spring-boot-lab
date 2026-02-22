@@ -22,4 +22,8 @@ public String hello(@RequestParam(required = false) String name) {
 
     return "Hello!";
 }
+@GetMapping("/greet")
+public String greet() {
+    return "Welcome to Spring Boot!";
+}
 }
